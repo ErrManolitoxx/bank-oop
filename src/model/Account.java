@@ -18,6 +18,10 @@ public class Account {
         System.out.println("IBAN: " + iban + " Saldo: " + saldo + " NIF: " + cutomer);
     }
 
+    public void deposit(double amount) {
+        saldo += amount;
+    }
+
     public String getIban() {
         return iban;
     }

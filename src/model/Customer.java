@@ -13,6 +13,9 @@ public class Customer {
         this.name = name;
         this.surname = surname;
     }
+    public void showInfo(String nif, String name, String surname) {
+        System.out.println("NIF del cliente: " + nif + " Nombre: " + name + " Apellidos: " + surname);
+    }
 
     public String getNif() {
         return nif;

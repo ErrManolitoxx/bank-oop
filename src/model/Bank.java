@@ -1,10 +1,7 @@
 package model;
 
-import components.Accountreader;
-
 import java.util.Arrays;
 import java.util.Objects;
-import java.util.Scanner;
 
 public class Bank {
 
@@ -33,10 +30,6 @@ public class Bank {
         }
     }
 
-    public void nifInfoAccount() {
-
-    }
-
     public void nifInfoAccount(String nif) {
         for (Account account: accounts) {
             if (account.getCutomer().equals(nif)) {
@@ -45,6 +38,34 @@ public class Bank {
         }
     }
 
+    public void depositAccount(String iban, double amount) {
+        Account account = findAccount(iban);
+
+        if (account != null) {
+            account.deposit(amount);
+        } else {
+            System.out.println("Cuenta no encontrada");
+        }
+    }
+
+    public int customerAccounts (String nif) {
+        for(Account account: accounts) {
+            if(account.getCutomer().equals(nif)) {
+                return accounts.length;
+            }
+        }
+        return 0;
+    }
+
+    public String customerData (String iban) {
+        Account account = findAccount(iban);
+
+        if (account != null) {
+            return account.getCutomer();
+        } else {
+            return null;
+        }
+    }
 
     public Bank(String name, Account[] accounts) {
 
