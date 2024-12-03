@@ -15,6 +15,8 @@ Métodos:
 - Dado un IBAN, mostrar la información de la cuenta con ese IBAN.
 - Dado un NIF, mostrar todas las cuentas del cliente con ese NIF 
 - Dado un IBAN y una cantidad de dinero, ingresar esa cantidad en la cuenta con ese IBAN. Si no se encuentra la cuenta con ese IBAN muestra el mensaje "No se encuentra la cuenta"
+- Dado un NIF, devuelve el numero de cuentas de ese cliente
+- Dado un IBAN, devuelve los datos del cliente al que  pertenece la cuenta. Si no existe la cuenta, devuelve null 
 
 ### Account
 
@@ -57,10 +59,10 @@ Tendrá un método run() que realice los siguiente:
        - Si existe se modifica el saldo, añadiendo la cantidad. 
        - Se muestra la cuenta
   5. Sacar diner de una cuenta
-    - Se pide un IBAN
-    - Se pide una cantidad de dinero
-    - Se busca la cuenta con el IBAN.
-        - Si no existe se muestra el mensaje "No existe la cuenta"
-        - Si hay suficiente saldo, se reduce el saldo. Si no hay suficiente saldo se muestra "Saldo insuficiente"
-        - Se muestra la cuenta
+     - Se pide un IBAN
+     - Se pide una cantidad de dinero
+     - Se busca la cuenta con el IBAN.
+         - Si no existe se muestra el mensaje "No existe la cuenta"
+         - Si hay suficiente saldo, se reduce el saldo. Si no hay suficiente saldo se muestra "Saldo insuficiente"
+         - Se muestra la cuenta
 
