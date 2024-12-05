@@ -4,38 +4,42 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class Bank {
+
     private String name;
     private Account[] accounts;
 
-    public Bank(String name, Account[] accounts) {
-        this.name = name;
-        this.accounts = accounts;
-    }
-
     public void showAccounts() {
-        for (var account : accounts) {
+        for (Account account: accounts) {
             account.showInfo();
         }
     }
 
-    public void showAccount(String iban) {
-        for (var account : accounts) {
+    public Account findAccount (String iban) {
+        for  (Account account: accounts) {
             if (account.getIban().equals(iban)) {
+                return account;
+            }
+        }
+        return null;
+    }
+
+    public void ibanInfoAccount(String iban) {
+        Account account = findAccount(iban);
+        if (account != null) {
+            account.showInfo();
+        }
+    }
+
+    public void nifInfoAccount(String nif) {
+        for (Account account: accounts) {
+            if (account.getCutomer().equals(nif)) {
                 account.showInfo();
             }
         }
     }
 
-    public void showCustomerAccounts(String nif) {
-        for (var account : accounts) {
-            if (account.getCustomer().getNif().equals(nif)) {
-                account.showInfo();
-            }
-        }
-    }
-
-    public void deposit(String iban, double amount) {
-        var account = findAccount(iban);
+    public void depositAccount(String iban, double amount) {
+        Account account = findAccount(iban);
 
         if (account != null) {
             account.deposit(amount);
@@ -44,13 +48,27 @@ public class Bank {
         }
     }
 
-    public Account findAccount(String iban) {
-        for (var account : accounts) {
-            if (account.getIban().equals(iban)) {
-                return account;
+    public int customerAccounts (String nif) {
+        for(Account account: accounts) {
+            if(account.getCutomer().equals(nif)) {
+                return accounts.length;
             }
         }
-        return null;
+        return 0;
+    }
+
+    public String customerData (String iban) {
+        Account account = findAccount(iban);
+
+        if (account != null) {
+            return account.getCutomer();
+        } else {
+            return null;
+        }
+    }
+
+    public Bank(String name, Account[] accounts) {
+
     }
 
     public String getName() {
@@ -71,6 +89,7 @@ public class Bank {
 
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Bank bank = (Bank) o;
         return Objects.equals(name, bank.name) && Objects.deepEquals(accounts, bank.accounts);

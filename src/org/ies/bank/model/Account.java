@@ -3,25 +3,23 @@ package org.ies.bank.model;
 import java.util.Objects;
 
 public class Account {
-    private String iban;
-    private double balance;
-    private Customer customer;
 
-    public Account(String iban, double balance, Customer customer) {
+    private String iban;
+    private double saldo;
+    private String cutomer;
+
+    public Account(String iban, double saldo, String cutomer) {
         this.iban = iban;
-        this.balance = balance;
-        this.customer = customer;
+        this.saldo = saldo;
+        this.cutomer = cutomer;
     }
 
     public void showInfo() {
-        System.out.println("IBAN: " + iban +
-                ". Saldo: " + balance +
-                ". NIF cliente: " + customer.getNif()
-        );
+        System.out.println("IBAN: " + iban + " Saldo: " + saldo + " NIF: " + cutomer);
     }
 
     public void deposit(double amount) {
-        balance += amount;
+        saldo += amount;
     }
 
     public String getIban() {
@@ -32,40 +30,41 @@ public class Account {
         this.iban = iban;
     }
 
-    public double getBalance() {
-        return balance;
+    public double getSaldo() {
+        return saldo;
     }
 
-    public void setBalance(double balance) {
-        this.balance = balance;
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public String getCutomer() {
+        return cutomer;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCutomer(String cutomer) {
+        this.cutomer = cutomer;
     }
 
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Account account = (Account) o;
-        return Double.compare(balance, account.balance) == 0 && Objects.equals(iban, account.iban) && Objects.equals(customer, account.customer);
+        return Double.compare(saldo, account.saldo) == 0 && Objects.equals(iban, account.iban) && Objects.equals(cutomer, account.cutomer);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(iban, balance, customer);
+        return Objects.hash(iban, saldo, cutomer);
     }
 
     @Override
     public String toString() {
         return "Account{" +
                 "iban='" + iban + '\'' +
-                ", balance=" + balance +
-                ", customer=" + customer +
+                ", saldo=" + saldo +
+                ", cutomer='" + cutomer + '\'' +
                 '}';
     }
 }

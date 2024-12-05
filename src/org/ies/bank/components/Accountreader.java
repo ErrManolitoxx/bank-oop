@@ -1,20 +1,19 @@
-package components;
+package org.ies.bank.components;
 
-import model.Account;
+import org.ies.bank.model.Account;
 
 import java.util.Scanner;
 
 public class Accountreader {
 
     private final Scanner scanner;
-    private BankReader bankReader;
     private CustomerReader customerReader;
 
-    public Accountreader(Scanner scanner, BankReader bankReader, CustomerReader customerReader) {
+    public Accountreader(Scanner scanner, CustomerReader customerReader) {
         this.scanner = scanner;
-        this.bankReader = bankReader;
         this.customerReader = customerReader;
     }
+
 
     public Account read () {
         System.out.println("Introduzca los datos de la cuenta: ");

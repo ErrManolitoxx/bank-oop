@@ -3,6 +3,7 @@ package org.ies.bank.model;
 import java.util.Objects;
 
 public class Customer {
+
     private String nif;
     private String name;
     private String surname;
@@ -11,6 +12,9 @@ public class Customer {
         this.nif = nif;
         this.name = name;
         this.surname = surname;
+    }
+    public void showInfo(String nif, String name, String surname) {
+        System.out.println("NIF del cliente: " + nif + " Nombre: " + name + " Apellidos: " + surname);
     }
 
     public String getNif() {
@@ -39,7 +43,7 @@ public class Customer {
 
     @Override
     public boolean equals(Object o) {
-
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
         return Objects.equals(nif, customer.nif) && Objects.equals(name, customer.name) && Objects.equals(surname, customer.surname);
@@ -50,5 +54,12 @@ public class Customer {
         return Objects.hash(nif, name, surname);
     }
 
-
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "nif='" + nif + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                '}';
+    }
 }
